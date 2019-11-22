@@ -6,7 +6,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -26,11 +25,16 @@ func modularExponent(x int64, y int64, modulos int64) int64 {
 	return (t * t) % modulos
 }
 
+// mixKeys Returns the "Mix" of the Secret Key operated with the common prime and square root base.
+// (( commonSquare ** privateKey ) mod commonPrime )
 func mixKeys(privateKey float64) int64 {
 	mixedKey := math.Pow(commonSquareRoot, privateKey)
 	return int64(int64(mixedKey) % commonPrime)
 }
 
+// mixSecretKeys Returns a "Mix" of the received mixed key from the other part
+// in the communication, and operates it with own's secretKey
+// (( receivedMixKey ** ownSecretKey ) mod commonPrime )
 func mixSecretKeys(receivedMixKey int64, ownSecretKey float64) int64 {
 	mixedKey := math.Pow(float64(receivedMixKey), ownSecretKey)
 	return int64(int64(mixedKey) % commonPrime)
@@ -38,31 +42,17 @@ func mixSecretKeys(receivedMixKey int64, ownSecretKey float64) int64 {
 
 func main() {
 
-	// publicKey := "blue"
 	var aliceSecretKey, bobSecretKey float64 = 6, 15
 
 	aliceMixedKey := mixKeys(aliceSecretKey)
 	bobMixedKey := mixKeys(bobSecretKey)
 
-	fmt.Println("Mixed Alice = ")
-	fmt.Println(aliceMixedKey)
-	fmt.Println("Mixed Bob = ")
-	fmt.Println(bobMixedKey)
+	PrintMixedKeys(aliceMixedKey, bobMixedKey)
 
-	fmt.Println("\n" + "-------------------------------" + "\n")
-
-	fmt.Print("Alice envia ")
-	fmt.Print(aliceMixedKey)
-	fmt.Println()
-
-	fmt.Print("Bob envia ")
-	fmt.Print(bobMixedKey)
-	fmt.Println()
+	PrintKeyExchange(aliceMixedKey, bobMixedKey)
 
 	aliceMixedSecret := mixSecretKeys(bobMixedKey, aliceSecretKey)
 	bobMixedSecret := mixSecretKeys(aliceMixedKey, bobSecretKey)
 
-	fmt.Println(aliceMixedSecret)
-	fmt.Println(bobMixedSecret)
-
+	PrintCommonSecretKey(aliceMixedSecret, bobMixedSecret)
 }
