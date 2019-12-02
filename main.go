@@ -9,10 +9,13 @@ var (
 	// commonPrime      int64   = 1091
 	// commonPrime      int64   = 105929
 	// commonPrime      int64   = 1301077
-	commonPrime      int64   = 15487457
+	// commonPrime      int64   = 15487457
+	// commonPrime      int64   = 86033551
+	// commonPrime      int64   = 122955661
+	commonPrime      int64   = 160487039
 	commonSquareRoot float64 = 5
-	aliceSecretKey   float64 = 1323
-	bobSecretKey     float64 = 3512
+	aliceSecretKey   float64 = 42412421
+	bobSecretKey     float64 = 35123213
 	// commonSquareRoot float64 = 9
 )
 
