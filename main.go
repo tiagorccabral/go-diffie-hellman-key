@@ -12,10 +12,12 @@ var (
 	// commonPrime      int64   = 15487457
 	// commonPrime      int64   = 86033551
 	// commonPrime      int64   = 122955661
-	commonPrime      int64   = 160487039
+	// commonPrime      int64   = 160487039
+	// commonPrime      int64   = 236893021
+	commonPrime      int64   = 548609707
 	commonSquareRoot float64 = 5
-	aliceSecretKey   float64 = 42412421
-	bobSecretKey     float64 = 35123213
+	aliceSecretKey   float64 = 424124212412
+	bobSecretKey     float64 = 351232133213
 	// commonSquareRoot float64 = 9
 )
 

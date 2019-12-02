@@ -29,9 +29,9 @@ func PrintKeyExchange(aliceMixedKey int64, bobMixedKey int64) {
 // PrintCommonSecretKey shows on terminal window the resultant secret common keys from both participants in the communication
 func PrintCommonSecretKey(aliceMixedSecret int64, bobMixedSecret int64) {
 	fmt.Println("\n\t" + "CHAVES COMPARTILHADAS OBTIDAS" + "\n")
-	fmt.Print("\tChave de Alice obtida: ")
+	fmt.Print("\tChave de Alice obtida: \t")
 	fmt.Println(aliceMixedSecret)
-	fmt.Print("\tChave de Bob obtida: ")
+	fmt.Print("\tChave de Bob obtida: \t")
 	fmt.Println(bobMixedSecret)
 	fmt.Println("\n" + "--------------------------------------------------" + "\n")
 }
