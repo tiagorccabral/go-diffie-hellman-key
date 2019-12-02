@@ -5,15 +5,14 @@
 
 package main
 
-import (
-	"math"
-)
-
 var (
-	commonPrime      int64   = 23
+	// commonPrime      int64   = 1091
+	// commonPrime      int64   = 105929
+	// commonPrime      int64   = 1301077
+	commonPrime      int64   = 15487457
 	commonSquareRoot float64 = 5
-	aliceSecretKey   float64 = 6
-	bobSecretKey     float64 = 15
+	aliceSecretKey   float64 = 1323
+	bobSecretKey     float64 = 3512
 	// commonSquareRoot float64 = 9
 )
 
@@ -31,7 +30,7 @@ func modularExponent(x int64, y int64, modulos int64) int64 {
 // mixKeys Returns the "Mix" of the Secret Key operated with the common prime and square root base.
 // (( commonSquare ** privateKey ) mod commonPrime )
 func mixKeys(privateKey float64) int64 {
-	mixedKey := math.Pow(commonSquareRoot, privateKey)
+	mixedKey := modularExponent(int64(commonSquareRoot), int64(privateKey), commonPrime)
 	return int64(int64(mixedKey) % commonPrime)
 }
 
@@ -39,7 +38,7 @@ func mixKeys(privateKey float64) int64 {
 // in the communication, and operates it with own's secretKey
 // (( receivedMixKey ** ownSecretKey ) mod commonPrime )
 func mixSecretKeys(receivedMixKey int64, ownSecretKey float64) int64 {
-	mixedKey := math.Pow(float64(receivedMixKey), ownSecretKey)
+	mixedKey := modularExponent(int64(receivedMixKey), int64(ownSecretKey), commonPrime)
 	return int64(int64(mixedKey) % commonPrime)
 }
 
