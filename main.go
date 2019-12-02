@@ -12,6 +12,9 @@ import (
 var (
 	commonPrime      int64   = 23
 	commonSquareRoot float64 = 5
+	aliceSecretKey   float64 = 6
+	bobSecretKey     float64 = 15
+	// commonSquareRoot float64 = 9
 )
 
 func modularExponent(x int64, y int64, modulos int64) int64 {
@@ -42,7 +45,7 @@ func mixSecretKeys(receivedMixKey int64, ownSecretKey float64) int64 {
 
 func main() {
 
-	var aliceSecretKey, bobSecretKey float64 = 6, 15
+	PrintSecretKeys(aliceSecretKey, bobSecretKey)
 
 	aliceMixedKey := mixKeys(aliceSecretKey)
 	bobMixedKey := mixKeys(bobSecretKey)
